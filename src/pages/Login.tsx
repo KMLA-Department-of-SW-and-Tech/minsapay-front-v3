@@ -5,13 +5,13 @@ import {
   loginFormButton,
   loginFormInput,
   loginFormInputOnFocus,
+  loginFormButtonOnHover,
 } from "../styles/loginpage";
 
 const Login = () => {
-  const [isIdFormOnFocus, setIsIdFormOnFocus] = useState(false);
-  const [isPasswordFormOnFocus, setIsPasswordFormOnFocus] = useState(false);
   const [idFormStyle, setIdFormStyle] = useState(loginFormInput);
   const [passwordFormStyle, setPasswordFormStyle] = useState(loginFormInput);
+  const [loginFormButtonStyle, setLoginFormButtonStyle] = useState(loginFormButton);
 
   const handleIdFormOnFocus = () => {
     setIdFormStyle(loginFormInputOnFocus);
@@ -27,6 +27,14 @@ const Login = () => {
 
   const handlePasswordFormOnBlur = () => {
     setPasswordFormStyle(loginFormInput);
+  };
+
+  const handleLoginFormButtonOnMouseEnter = () => {
+    setLoginFormButtonStyle(loginFormButtonOnHover);
+  };
+
+  const handleLoginFormButtonOnMouseLeave = () => {
+    setLoginFormButtonStyle(loginFormButton);
   };
 
   return (
@@ -46,7 +54,13 @@ const Login = () => {
         onFocus={handlePasswordFormOnFocus}
         onBlur={handlePasswordFormOnBlur}
       ></input>
-      <button style={loginFormButton}>로그인</button>
+      <button
+        style={loginFormButtonStyle}
+        onMouseEnter={handleLoginFormButtonOnMouseEnter}
+        onMouseLeave={handleLoginFormButtonOnMouseLeave}
+      >
+        로그인
+      </button>
     </div>
   );
 };

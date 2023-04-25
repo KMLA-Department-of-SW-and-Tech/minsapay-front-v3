@@ -9,11 +9,13 @@ import {
 } from "react-router-dom";
 
 import Login from "./pages/Login";
+import User from "./pages/User";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/login" element={<Login />} />
+      <Route path="/user" element={<User/>} />
       <Route path="/" element={<h1>Hi</h1>} />
     </>
   )
