@@ -10,3 +10,7 @@ export const userPage: CSSProperties = {
   margin: "auto",
   fontFamily: "Noto Sans KR",
 };
+
+export const userPageBody: CSSProperties = {
+  marginLeft: "120px",
+};

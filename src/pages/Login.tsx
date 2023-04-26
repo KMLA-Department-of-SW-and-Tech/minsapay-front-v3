@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   loginForm,
@@ -11,7 +11,10 @@ import {
 const Login = () => {
   const [idFormStyle, setIdFormStyle] = useState(loginFormInput);
   const [passwordFormStyle, setPasswordFormStyle] = useState(loginFormInput);
-  const [loginFormButtonStyle, setLoginFormButtonStyle] = useState(loginFormButton);
+  const [loginFormButtonStyle, setLoginFormButtonStyle] =
+    useState(loginFormButton);
+  const [id, setId] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const handleIdFormOnFocus = () => {
     setIdFormStyle(loginFormInputOnFocus);
@@ -37,6 +40,26 @@ const Login = () => {
     setLoginFormButtonStyle(loginFormButton);
   };
 
+  const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setId(e.target.value);
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  const onLoginButtonClick = () => {
+    console.log("Clicked Login");
+  };
+
+  useEffect(() => {
+    console.log(id);
+  }, [id]);
+
+  useEffect(() => {
+    console.log(password);
+  }, [password]);
+
   return (
     <div style={loginForm}>
       <h1>민사페이</h1>
@@ -46,6 +69,7 @@ const Login = () => {
         style={idFormStyle}
         onFocus={handleIdFormOnFocus}
         onBlur={handleIdFormOnBlur}
+        onChange={handleIdChange}
       ></input>
       <input
         type="password"
@@ -53,11 +77,13 @@ const Login = () => {
         style={passwordFormStyle}
         onFocus={handlePasswordFormOnFocus}
         onBlur={handlePasswordFormOnBlur}
+        onChange={handlePasswordChange}
       ></input>
       <button
         style={loginFormButtonStyle}
         onMouseEnter={handleLoginFormButtonOnMouseEnter}
         onMouseLeave={handleLoginFormButtonOnMouseLeave}
+        onClick={onLoginButtonClick}
       >
         로그인
       </button>
