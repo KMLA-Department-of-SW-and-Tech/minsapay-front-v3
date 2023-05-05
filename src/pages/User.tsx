@@ -1,4 +1,5 @@
 import React from "react";
+import { usePageStore } from "../store/pageStore";
 
 import UserSideNav from "../components/UserSideNav";
 import UserSettings from "../components/UserSettings";

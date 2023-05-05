@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import {
   loginForm,
@@ -49,7 +50,22 @@ const Login = () => {
   };
 
   const onLoginButtonClick = () => {
-    console.log("Clicked Login");
+    axios
+      .post("http://localhost:8800/api/auth/login", {
+        username: id,
+        password: password,
+      })
+      .then((response) => {
+        if (response.data.success === true) {
+          localStorage.setItem("token", response.data.token);
+          return window.location.href = "/";
+        } else {
+          alert("로그인 실패");
+        }
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   };
 
   useEffect(() => {

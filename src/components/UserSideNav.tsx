@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { usePageStore } from "../store/pageStore";
 
 // import { userSideNav } from "../styles/usersidenav";
 import minsapay from "../assets/images/minsapay.png";
@@ -11,12 +12,22 @@ import {
   navBarLogo,
   navBarLogoRegion,
   navBarLogoRegionOnHover,
+  logoDivStyle
 } from "../styles/usersidenavbar";
 
 const UserSideNav = () => {
+  const [currentPage, setCurrentPage] = useState(1);
   const [mainLogoStyle, setMainLogoStyle] = useState(navBarLogoRegion);
   const [settingLogoStyle, setSettingLogoStyle] = useState(navBarLogoRegion);
   const [profileLogoStyle, setProfileLogoStyle] = useState(navBarLogoRegion);
+/*
+  const page = usePageStore((state) => state.page);
+  const useSetPage = (page: number) =>
+    usePageStore((state) => state.setPage(page));
+
+  if (page !== currentPage) {
+    setCurrentPage(page);
+  } */
 
   const handleMainLogoHover = () => {
     setMainLogoStyle(navBarLogoRegionOnHover);
@@ -53,7 +64,7 @@ const UserSideNav = () => {
           height: "120px",
         }}
       ></img>
-      <div>
+      <div style={logoDivStyle}>
         <div
           style={mainLogoStyle}
           onMouseEnter={handleMainLogoHover}
