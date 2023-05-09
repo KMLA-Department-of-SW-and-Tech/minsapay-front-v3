@@ -37,7 +37,6 @@ if (window.innerWidth < 600) {
   logo = {
     width: "40px",
     height: "40px",
-    marginTop: "10px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -59,12 +58,17 @@ export const navBarLogo: CSSProperties = logo;
 
 if (window.innerWidth < 600) {
   logoRegion = {
-    width: "40px",
-    height: "40px",
+    width: "100px",
+    height: "100px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: "10px",
+
+    transition: "all 0.2s ease-in-out",
+    borderRadius: "10%",
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
+    marginLeft: "10px",
+
   };
 } else {
   logoRegion = {
@@ -83,14 +87,16 @@ export const navBarLogoRegion: CSSProperties = logoRegion;
 
 if (window.innerWidth < 600) {
   logoRegionOnHover = {
-    width: "40px",
-    height: "40px",
+    width: "100px",
+    height: "100px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     marginTop: "10px",
     borderRadius: "10%",
     backgroundColor: "rgba(255, 102, 0, 0.7)",
+    marginLeft: "10px",
+
   };
 } else {
   logoRegionOnHover = {
@@ -108,7 +114,6 @@ if (window.innerWidth < 600) {
 }
 
 export const navBarLogoRegionOnHover: CSSProperties = logoRegionOnHover;
-
 
 if (window.innerWidth < 600) {
   divStyle = {
