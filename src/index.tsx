@@ -7,22 +7,17 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-
-import Login from "./pages/Login";
-import User from "./pages/User";
-
-import verifyJWT from "./functions/verification/verifyJWT";
+import Temp from "./pages/Temp";
+import MobileLoginPage from "./pages/MobileLoginPage";
 
 let router: any;
 
-const token = localStorage.getItem("token") || "";
-
-if (localStorage.getItem("token") && verifyJWT(token)) {
+if (1) {
   console.log("token exists");
   router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path="/" element={<User />} />
+        <Route path="/" element={<MobileLoginPage />} />
       </>
     )
   );
@@ -31,7 +26,7 @@ if (localStorage.getItem("token") && verifyJWT(token)) {
   router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Temp />} />
       </>
     )
   );
