@@ -25,14 +25,16 @@ const MobileUserMainPage = () => {
       console.error("Error fetching data:", error);
     }
   };
-  console.log(data);
-  data.map((payment: any) => {
-    // leave only time
-    payment.time = payment.time
-    console.log(payment.time.split("T")[0])
-  })
-  // map mobile user payment component
-  let paymentList = data.map((payment: any) => (
+
+  const reverseArray = (array: any) => {
+    let newArray = [];
+    for (let i = array.length - 1; i >= 0; i--) {
+      newArray.push(array[i]);
+    }
+    return newArray;
+  };
+
+  let paymentList = reverseArray(data).map((payment: any) => (
     <MobileUserPayment
       price={payment.price}
       balance={payment.userAmount}
@@ -41,6 +43,8 @@ const MobileUserMainPage = () => {
       product={payment.product}
     />
   ));
+
+
 
   useEffect(() => {
     fetchData();
