@@ -9,26 +9,22 @@ import {
 
 import logo from "../assets/images/minsapay.png";
 import arrow from "../assets/images/arrow.png";
-import settings from '../assets/images/settings.png'
+import settings from "../assets/images/settings.png";
 
-const MobileNavMain = (props: any) => {
-  const onClickSettings = () => {
-    window.location.href = "/settings";
-  }
-
+const MobileNavSetting = () => {
   return (
     <div style={mobileNav}>
       <div>
         <img src={logo} alt="logo" style={logoStyle} />
       </div>
       <div>
-        <h1>{props.name}</h1>
+        <h1>211033</h1>
       </div>
       <div style={logoDiv}>
-        <img src={settings} alt="settings" style={smallLogoStyle} onClick={onClickSettings} />
+        <img src={arrow} alt="arrow" style={smallLogoStyle} />
       </div>
     </div>
   );
 };
 
-export default MobileNavMain;
+export default MobileNavSetting;

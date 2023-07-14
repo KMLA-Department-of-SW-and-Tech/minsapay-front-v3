@@ -9,6 +9,7 @@ import MobileLoginTitle from "./MobileLoginTitle";
 
 import { mobileLoginDiv } from "../styles/mobileLoginDiv";
 
+
 const state = useLoginStore.getState()
 
 const MobileLoginDiv = () => {

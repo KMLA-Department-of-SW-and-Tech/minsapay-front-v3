@@ -7,6 +7,9 @@ export const mobileNav: CSSProperties = {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
+  position: "fixed",
+  backgroundColor: "#fff",
+  // make sure the nav is always on top
 };
 
 export const logoStyle: CSSProperties = {

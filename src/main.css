@@ -1,0 +1,11 @@
+/* import comfortaa font from ./src/assets/fonts/comfortaa-medium */
+@font-face {
+  font-family: 'Comfortaa';
+  src: url('./assets/fonts/Comfortaa-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+* {
+    font-family: 'Comfortaa', sans-serif;
+}

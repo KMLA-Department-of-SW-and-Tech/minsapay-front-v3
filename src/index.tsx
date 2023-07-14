@@ -7,26 +7,43 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+
+import jwt_decode from "jwt-decode";
+
 import Temp from "./pages/Temp";
 import MobileLoginPage from "./pages/MobileLoginPage";
+import MobileUserMainPage from "./pages/MobileUserMainPage";
+import MobileUserPayment from "./components/MobileUserPayment";
+
+import './main.css';
 
 let router: any;
 
-if (1) {
-  console.log("token exists");
+const token = localStorage.getItem("token") as string;
+
+let decoded: any;
+
+try {
+  decoded = jwt_decode(token);
+} catch (err) {
+}
+
+console.log("Hi")
+
+if (localStorage.getItem("token") !== null && decoded !== undefined) {
   router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path="/" element={<Temp />} />
+        <Route path="/" element={<MobileUserMainPage />} />
       </>
     )
   );
 } else {
-  console.log("token does not exist");
+  // console.log("token does not exist");
   router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path="/" element={<Temp />} />
+        <Route path="/" element={<MobileLoginPage />} />
       </>
     )
   );
