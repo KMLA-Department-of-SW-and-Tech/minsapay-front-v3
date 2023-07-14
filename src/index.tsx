@@ -17,7 +17,7 @@ if (1) {
   router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path="/" element={<MobileLoginPage />} />
+        <Route path="/" element={<Temp />} />
       </>
     )
   );

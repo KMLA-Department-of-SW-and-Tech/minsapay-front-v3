@@ -1,10 +1,15 @@
 import React from "react";
+import { create } from 'zustand'
+
+import { useLoginStore } from "../store/useLoginStore";
 
 import MobileTextInput from "./MobileTextInput";
 import MobileLoginButton from "./MobileLoginButton";
 import MobileLoginTitle from "./MobileLoginTitle";
 
 import { mobileLoginDiv } from "../styles/mobileLoginDiv";
+
+const state = useLoginStore.getState()
 
 const MobileLoginDiv = () => {
   return (
