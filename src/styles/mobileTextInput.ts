@@ -6,4 +6,5 @@ export const textInput: CSSProperties = {
   border: "2px solid #000",
   borderRadius: "15px",
   margin: "5px 0",
+  fontSize: "16px",
 };
