@@ -15,7 +15,11 @@ import MobileLoginPage from "./pages/MobileLoginPage";
 import MobileUserMainPage from "./pages/MobileUserMainPage";
 import MobileUserPayment from "./components/MobileUserPayment";
 
-import './main.css';
+import "./main.css";
+import MobileUserSettingPage from "./pages/MobileUserSettingPage";
+import DesktopLoginNav from "./components/DesktopLoginNav";
+import DesktopLoginPage from "./pages/DesktopLoginPage";
+import StoreTemp from "./pages/StoreTemp";
 
 let router: any;
 
@@ -25,28 +29,69 @@ let decoded: any;
 
 try {
   decoded = jwt_decode(token);
-} catch (err) {
-}
-
-console.log("Hi")
+} catch (err) {}
 
 if (localStorage.getItem("token") !== null && decoded !== undefined) {
-  router = createBrowserRouter(
-    createRoutesFromElements(
-      <>
-        <Route path="/" element={<MobileUserMainPage />} />
-      </>
-    )
-  );
+  if (decoded.login.userType === "user") {
+    if (window.innerWidth <= 768) {
+      router = createBrowserRouter(
+        createRoutesFromElements(
+          <>
+            <Route path="/" element={<MobileUserMainPage />} />
+            <Route path="/settings" element={<MobileUserSettingPage />} />
+            <Route path="*" element={<Temp />} />
+          </>
+        )
+      );
+    } else {
+      router = createBrowserRouter(
+        createRoutesFromElements(
+          <>
+            <Route path="/" element={<MobileUserMainPage />} />
+            <Route path="/settings" element={<MobileUserSettingPage />} />
+            <Route path="*" element={<Temp />} />
+          </>
+        )
+      );
+    }
+  } else if (decoded.login.userType === "store") {
+    if (window.innerWidth <= 768) {
+      router = createBrowserRouter(
+        createRoutesFromElements(
+          <>
+            <Route path="/" element={<StoreTemp />} />
+          </>
+        )
+      );
+    } else {
+      
+      router = createBrowserRouter(
+        createRoutesFromElements(
+          <>
+            <Route path="/" element={<StoreTemp />} />
+          </>
+        )
+      );
+    }
+  }
 } else {
-  // console.log("token does not exist");
+  if (window.innerWidth <= 768) {
+
   router = createBrowserRouter(
     createRoutesFromElements(
       <>
         <Route path="/" element={<MobileLoginPage />} />
       </>
     )
-  );
+  )} else {
+    router = createBrowserRouter(
+      createRoutesFromElements(
+        <>
+          <Route path="/" element={<DesktopLoginPage />} />
+        </>
+      )
+    );
+  };
 }
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

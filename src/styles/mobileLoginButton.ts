@@ -8,5 +8,5 @@ export const loginButton: CSSProperties = {
   backgroundColor: "#000",
   color: "#fff",
   fontSize: "15px",
-  margin: "10px 0",
+  marginTop: "20px",
 };

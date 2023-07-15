@@ -41,10 +41,9 @@ const MobileUserMainPage = () => {
       time={payment.time}
       store={payment.nameOfStore}
       product={payment.product}
+      key={payment._id}
     />
   ));
-
-
 
   useEffect(() => {
     fetchData();

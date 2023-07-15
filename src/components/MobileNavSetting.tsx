@@ -12,6 +12,9 @@ import arrow from "../assets/images/arrow.png";
 import settings from "../assets/images/settings.png";
 
 const MobileNavSetting = () => {
+  const onArrowClick = () => {
+    window.location.href = "/";
+  };
   return (
     <div style={mobileNav}>
       <div>
@@ -21,7 +24,7 @@ const MobileNavSetting = () => {
         <h1>211033</h1>
       </div>
       <div style={logoDiv}>
-        <img src={arrow} alt="arrow" style={smallLogoStyle} />
+        <img src={arrow} alt="arrow" style={smallLogoStyle} onClick={onArrowClick}/>
       </div>
     </div>
   );
