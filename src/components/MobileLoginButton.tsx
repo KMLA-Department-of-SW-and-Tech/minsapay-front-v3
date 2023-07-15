@@ -7,9 +7,6 @@ import { loginButton } from "../styles/mobileLoginButton"
 const state = useLoginStore.getState();
 
 const onClickLogin = () => {
-  console.log("login");
-  console.log(state.id);
-  console.log(state.pw);
 }
 
 const LoginButton = () => {

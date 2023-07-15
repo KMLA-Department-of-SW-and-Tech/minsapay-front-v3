@@ -11,7 +11,7 @@ import TempMobileLoginDiv from "../components/TempMobileLoginDiv";
 const Temp = () => {
   return (
     <div>
-      <TempMobileLoginDiv />
+      <h1>404</h1>
     </div>
   );
 };

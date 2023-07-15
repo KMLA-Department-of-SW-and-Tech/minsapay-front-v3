@@ -5,12 +5,10 @@ export const desktopNavMain: CSSProperties = {
   top: 0,
   width: "100%",
   borderBottom: "1px solid #000",
-  // place 3 divs at the left, center and right
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-
-
+  backgroundColor: "#fff",
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
 };
 
 export const logoStyle: CSSProperties = {
@@ -29,7 +27,6 @@ export const logoDiv: CSSProperties = {
   height: "75px",
   // put the div in the center
   marginRight: "50px",
-
 };
 
 export const smallLogoStyle: CSSProperties = {
@@ -37,10 +34,10 @@ export const smallLogoStyle: CSSProperties = {
   height: "50px",
 };
 
-export const mainLogoDiv: CSSProperties = { 
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100px",
-    height: "100px",
-}
+export const mainLogoDiv: CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "100px",
+  height: "100px",
+};

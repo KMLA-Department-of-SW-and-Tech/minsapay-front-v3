@@ -11,6 +11,10 @@ import {
 } from "../styles/desktopNavMain";
 
 const DesktopNavMain = (props: any) => {
+  const onPressSetting = () => {
+    window.location.href = "/settings";
+  };
+
   return (
     <div style={desktopNavMain}>
       <div style={logoDiv}></div>
@@ -18,7 +22,7 @@ const DesktopNavMain = (props: any) => {
         <img src={logo} alt="logo" style={logoStyle} />
       </div>
       <div style={logoDiv}>
-        <img src={settings} alt="settings" style={smallLogoStyle} />
+        <img src={settings} alt="settings" style={smallLogoStyle} onClick={onPressSetting} />
       </div>
     </div>
   );

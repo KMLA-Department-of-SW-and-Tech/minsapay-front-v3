@@ -21,6 +21,7 @@ import DesktopLoginNav from "./components/DesktopLoginNav";
 import DesktopLoginPage from "./pages/DesktopLoginPage";
 import StoreTemp from "./pages/StoreTemp";
 import StoreMainPage from "./pages/StoreMainPage";
+import DesktopStoreSettings from "./pages/DesktopStoreSettings";
 
 let router: any;
 
@@ -61,15 +62,18 @@ if (localStorage.getItem("token") !== null && decoded !== undefined) {
         createRoutesFromElements(
           <>
             <Route path="/" element={<StoreMainPage />} />
+            <Route path="/settings" element={<DesktopStoreSettings />} />
+            <Route path="*" element={<Temp />} />
           </>
         )
       );
     } else {
-      
       router = createBrowserRouter(
         createRoutesFromElements(
           <>
             <Route path="/" element={<StoreMainPage />} />
+            <Route path="/settings" element={<DesktopStoreSettings />} />
+            <Route path="*" element={<Temp />} />
           </>
         )
       );
@@ -77,14 +81,14 @@ if (localStorage.getItem("token") !== null && decoded !== undefined) {
   }
 } else {
   if (window.innerWidth <= 768) {
-
-  router = createBrowserRouter(
-    createRoutesFromElements(
-      <>
-        <Route path="/" element={<MobileLoginPage />} />
-      </>
-    )
-  )} else {
+    router = createBrowserRouter(
+      createRoutesFromElements(
+        <>
+          <Route path="/" element={<MobileLoginPage />} />
+        </>
+      )
+    );
+  } else {
     router = createBrowserRouter(
       createRoutesFromElements(
         <>
@@ -92,7 +96,7 @@ if (localStorage.getItem("token") !== null && decoded !== undefined) {
         </>
       )
     );
-  };
+  }
 }
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

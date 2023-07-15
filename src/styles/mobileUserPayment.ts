@@ -48,7 +48,6 @@ export const info: CSSProperties = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  // textAlign: "center",
   width: "50%",
   height: "100%",
 };
@@ -84,7 +83,7 @@ export const productBox: CSSProperties = {
   justifyContent: "center",
   width: "60%",
   height: "50%",
-    borderRight: "3px solid #000",
+  borderRight: "3px solid #000",
 };
 
 export const store: CSSProperties = {
@@ -95,5 +94,4 @@ export const store: CSSProperties = {
   marginBottom: "auto",
 };
 
-export const productInfo: CSSProperties = {
-};
+export const productInfo: CSSProperties = {};

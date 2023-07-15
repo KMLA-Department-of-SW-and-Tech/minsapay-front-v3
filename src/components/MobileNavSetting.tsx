@@ -11,7 +11,7 @@ import logo from "../assets/images/minsapay.png";
 import arrow from "../assets/images/arrow.png";
 import settings from "../assets/images/settings.png";
 
-const MobileNavSetting = () => {
+const MobileNavSetting = (props: any) => {
   const onArrowClick = () => {
     window.location.href = "/";
   };
@@ -21,10 +21,15 @@ const MobileNavSetting = () => {
         <img src={logo} alt="logo" style={logoStyle} />
       </div>
       <div>
-        <h1>211033</h1>
+        <h1>{props.user.login.username}</h1>
       </div>
       <div style={logoDiv}>
-        <img src={arrow} alt="arrow" style={smallLogoStyle} onClick={onArrowClick}/>
+        <img
+          src={arrow}
+          alt="arrow"
+          style={smallLogoStyle}
+          onClick={onArrowClick}
+        />
       </div>
     </div>
   );
