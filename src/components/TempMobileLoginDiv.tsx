@@ -35,7 +35,7 @@ const TempMobileLoginDiv = () => {
       return;
     }
     axios
-      .post("http://localhost:8800/api/auth/login", {
+      .post("https://minsapay-backend-c1deff28ec91.herokuapp.com/api/auth/login", {
         username: id,
         password: pw,
       })

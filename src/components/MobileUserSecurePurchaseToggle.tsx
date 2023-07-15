@@ -28,7 +28,7 @@ const MobileUserSecurePurchaseToggle = (props: any) => {
 
   const onRender = () => {
     axios
-      .get(`http://localhost:8800/api/user/secure/${props.user.login.username}`)
+      .get(`https://minsapay-backend-c1deff28ec91.herokuapp.com/api/user/secure/${props.user.login.username}`)
       .then((res) => {
         setToggle(res.data.isSecurePurchase);
       });
@@ -37,7 +37,7 @@ const MobileUserSecurePurchaseToggle = (props: any) => {
   const onPressSave = () => {
     axios
       .post(
-        `http://localhost:8800/api/user/mode/${props.user.login.username}`,
+        `https://minsapay-backend-c1deff28ec91.herokuapp.com/api/user/mode/${props.user.login.username}`,
         {
           newSecurePurchaseMode: toggle,
         }

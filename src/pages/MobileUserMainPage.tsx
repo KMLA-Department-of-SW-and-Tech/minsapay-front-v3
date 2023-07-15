@@ -18,7 +18,7 @@ const MobileUserMainPage = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8800/api/purchase/user/${decoded.login.username}`
+        `https://minsapay-backend-c1deff28ec91.herokuapp.com/api/purchase/user/${decoded.login.username}`
       );
       setData(response.data.purchases);
     } catch (error) {

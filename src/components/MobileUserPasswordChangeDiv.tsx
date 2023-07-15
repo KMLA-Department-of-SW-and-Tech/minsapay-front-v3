@@ -28,7 +28,7 @@ const MobileUserPasswordChangeDiv = (props: any) => {
       return;
     }
     axios
-      .post("http://localhost:8800/api/auth/change-password", {
+      .post("https://minsapay-backend-c1deff28ec91.herokuapp.com/api/auth/change-password", {
         username: props.user.login.username,
         newPassword: newPassword,
       })

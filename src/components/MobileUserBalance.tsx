@@ -18,7 +18,7 @@ const MobileUserBalance = (props: any) => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8800/api/user/username/${props.user.username}`
+        `https://minsapay-backend-c1deff28ec91.herokuapp.com/api/user/username/${props.user.username}`
       ); // Make a GET request to the backend API
       setUserInfo(response.data.user); // Set the state with the response data
       setIsSecurePurchase(response.data.user.isSecurePurchase);
@@ -31,7 +31,7 @@ const MobileUserBalance = (props: any) => {
     if (isSecurePurchase === true) {
       axios
         .post(
-          `http://localhost:8800/api/user/purchase/${props.user.username}`,
+          `https://minsapay-backend-c1deff28ec91.herokuapp.com/api/user/purchase/${props.user.username}`,
           {}
         )
         .then((res) => {
