@@ -20,6 +20,7 @@ import MobileUserSettingPage from "./pages/MobileUserSettingPage";
 import DesktopLoginNav from "./components/DesktopLoginNav";
 import DesktopLoginPage from "./pages/DesktopLoginPage";
 import StoreTemp from "./pages/StoreTemp";
+import StoreMainPage from "./pages/StoreMainPage";
 
 let router: any;
 
@@ -59,7 +60,7 @@ if (localStorage.getItem("token") !== null && decoded !== undefined) {
       router = createBrowserRouter(
         createRoutesFromElements(
           <>
-            <Route path="/" element={<StoreTemp />} />
+            <Route path="/" element={<StoreMainPage />} />
           </>
         )
       );
@@ -68,7 +69,7 @@ if (localStorage.getItem("token") !== null && decoded !== undefined) {
       router = createBrowserRouter(
         createRoutesFromElements(
           <>
-            <Route path="/" element={<StoreTemp />} />
+            <Route path="/" element={<StoreMainPage />} />
           </>
         )
       );
