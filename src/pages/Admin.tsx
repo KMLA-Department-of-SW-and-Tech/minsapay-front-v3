@@ -115,7 +115,7 @@ const Admin = () => {
               {
                 amount: -chargeAmount,
                 username: moneyUser,
-                storeName: "daechita",
+                storeName: "admin",
                 productName: "충전",
                 nameOfStore: "관리자",
                 nameOfUser: "충전유저",
