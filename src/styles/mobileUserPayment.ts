@@ -39,7 +39,7 @@ export const costBox: CSSProperties = {
 
 export const cost: CSSProperties = {
   display: "block",
-  fontSize: "30px",
+  fontSize: "24px",
   fontWeight: "700",
   letterSpacing: "1.2px",
 };
@@ -88,7 +88,7 @@ export const productBox: CSSProperties = {
 
 export const store: CSSProperties = {
   color: "#000",
-  fontSize: "24px",
+  fontSize: "18px",
   fontWeight: "700",
   letterSpacing: "0.96px",
   marginBottom: "auto",
