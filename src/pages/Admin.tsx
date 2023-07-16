@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Admin = () => {
@@ -9,6 +9,9 @@ const Admin = () => {
   const [storeUsername, setStoreUsername] = useState("");
   const [storePassword, setStorePassword] = useState("");
   const [storeName, setStoreName] = useState("");
+
+  const [moneyUser, setMoneyUser] = useState("");
+  const [chargeAmount, setChargeAmount] = useState("");
 
   const handleUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
@@ -32,6 +35,14 @@ const Admin = () => {
 
   const handleStoreName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStoreName(e.target.value);
+  };
+
+  const handleMoneyUser = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMoneyUser(e.target.value);
+  };
+
+  const handleChargeAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setChargeAmount(e.target.value);
   };
 
   const onClickStoreRegister = () => {
@@ -91,54 +102,63 @@ const Admin = () => {
       });
   };
 
+  const onClickCharge = async () => {
+    await axios
+      .post(
+        `https://minsapay-backend-c1deff28ec91.herokuapp.com/api/user/purchase/${moneyUser}`
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          axios
+            .post(
+              `https://minsapay-backend-c1deff28ec91.herokuapp.com/api/purchase/create`,
+              {
+                amount: -chargeAmount,
+                username: moneyUser,
+                storeName: "daechita",
+                productName: "충전",
+                nameOfStore: "관리자",
+                nameOfUser: "충전유저",
+              }
+            )
+            .then((res) => {
+              if (res.status === 200) {
+                alert("충전에 성공했습니다.");
+                window.location.reload();
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+              alert("실패");
+            });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("실패");
+      });
+  };
+
+  useEffect(() => {
+    console.log(moneyUser, chargeAmount);
+  }, [moneyUser, chargeAmount]);
+
   return (
     <>
       <div>
-        <h1>관리자 페이지</h1>
         <input
-          type="text"
-          value={username}
-          onChange={handleUsername}
-          placeholder="아이디"
+          placeholder="학번"
+          value={moneyUser}
+          onChange={handleMoneyUser}
+          type="number"
         />
         <input
-          type="text"
-          value={password}
-          onChange={handlePassword}
-          placeholder="비번"
+          placeholder="금액"
+          value={chargeAmount}
+          onChange={handleChargeAmount}
+          type="number"
         />
-        <input
-          type="text"
-          value={name}
-          onChange={handleName}
-          placeholder="이름"
-        />
-
-        <button onClick={onClickRegister}>유저 생성</button>
-      </div>
-
-      <div>
-        <h1>관리자 페이지</h1>
-        <input
-          type="text"
-          value={storeUsername}
-          onChange={handleStoreUsername}
-          placeholder="아이디"
-        />
-        <input
-          type="text"
-          value={storePassword}
-          onChange={handleStorePassword}
-          placeholder="비번"
-        />
-        <input
-          type="text"
-          value={storeName}
-          onChange={handleStoreName}
-          placeholder="이름"
-        />
-
-        <button onClick={onClickStoreRegister}>유저 생성</button>
+        <button onClick={onClickCharge}>충전하기</button>
       </div>
     </>
   );

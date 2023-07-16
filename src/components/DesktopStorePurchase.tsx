@@ -57,6 +57,7 @@ const DesktopStorePurchase = (props: any) => {
   };
 
   const onPurchaseClick = () => {
+    alert("결제 진행중.. 기다려 주세요");
     if (purchaseId === "" || purchaseAmount === "" || purchaseItem === "") {
       return alert("모든 항목을 입력해주세요.");
     }

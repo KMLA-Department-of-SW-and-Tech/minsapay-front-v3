@@ -35,16 +35,19 @@ const TempMobileLoginDiv = () => {
       return;
     }
     axios
-      .post("https://minsapay-backend-c1deff28ec91.herokuapp.com/api/auth/login", {
-        username: id,
-        password: pw,
-      })
+      .post(
+        "https://minsapay-backend-c1deff28ec91.herokuapp.com/api/auth/login",
+        {
+          username: id,
+          password: pw,
+        }
+      )
       .then((res) => {
         console.log(res.status);
         if (res.status === 200) {
-            console.log(res.data.token);
-            localStorage.setItem("token", res.data.token);
-            window.location.href = "/";
+          console.log(res.data.token);
+          localStorage.setItem("token", res.data.token);
+          window.location.href = "/";
         } else {
           alert("로그인에 실패했습니다.");
           window.location.reload();
