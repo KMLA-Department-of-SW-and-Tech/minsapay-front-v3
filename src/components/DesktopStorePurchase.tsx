@@ -24,7 +24,6 @@ const DesktopStorePurchase = (props: any) => {
   const [purchaseId, setPurchaseId] = useState<string>("");
   const [purchaseAmount, setPurchaseAmount] = useState<string>("");
   const [purchaseItem, setPurchaseItem] = useState<string>("");
-
   const handlePurchaseHover = () => {
     setIsPurchaseHover(true);
     setPurchaseButtonStyle(desktopStorePurchaseButtonHover);
@@ -57,13 +56,18 @@ const DesktopStorePurchase = (props: any) => {
     setPurchaseItem(e.target.value);
   };
 
-  useEffect(() => {}, [purchaseId, purchaseAmount, purchaseItem]);
-
   const onPurchaseClick = () => {
     if (purchaseId === "" || purchaseAmount === "" || purchaseItem === "") {
       return alert("모든 항목을 입력해주세요.");
     }
     if (Number(purchaseAmount) <= 0) {
+      return alert("금액을 확인해주세요.");
+    }
+    if (Number(purchaseAmount) > 100000) {
+      return alert("최대 결제 금액은 100,000원입니다.");
+    }
+
+    if (purchaseAmount.includes(".")) {
       return alert("금액을 확인해주세요.");
     }
     axios
@@ -121,6 +125,9 @@ const DesktopStorePurchase = (props: any) => {
     if (Number(purchaseAmount) <= 0) {
       return alert("금액을 확인해주세요.");
     }
+    if (purchaseAmount.includes(".")) {
+      return alert("금액을 확인해주세요.");
+    }
     await axios
       .get(
         `https://minsapay-backend-c1deff28ec91.herokuapp.com/api/user/username/${purchaseId}`
@@ -167,6 +174,29 @@ const DesktopStorePurchase = (props: any) => {
         }
       });
   };
+
+  const [button, setButton] = useState<JSX.Element>(
+    <>
+      <button
+        style={purchaseButtonStyle}
+        onMouseEnter={handlePurchaseHover}
+        onMouseLeave={handlePurchaseLeave}
+        onClick={onPurchaseClick}
+      >
+        결제
+      </button>
+      <button
+        style={refundButtonStyle}
+        onMouseEnter={handleRefundHover}
+        onMouseLeave={handleRefundLeave}
+        onClick={onRefundClick}
+      >
+        환불
+      </button>
+    </>
+  );
+
+  useEffect(() => {}, [purchaseId, purchaseAmount, purchaseItem]);
 
   return (
     <div style={desktopStorePurchase}>

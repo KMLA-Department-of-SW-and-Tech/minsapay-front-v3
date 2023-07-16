@@ -22,6 +22,7 @@ import DesktopLoginPage from "./pages/DesktopLoginPage";
 import StoreTemp from "./pages/StoreTemp";
 import StoreMainPage from "./pages/StoreMainPage";
 import DesktopStoreSettings from "./pages/DesktopStoreSettings";
+import Admin from "./pages/Admin";
 
 let router: any;
 
@@ -72,12 +73,22 @@ if (localStorage.getItem("token") !== null && decoded !== undefined) {
         createRoutesFromElements(
           <>
             <Route path="/" element={<StoreMainPage />} />
+
             <Route path="/settings" element={<DesktopStoreSettings />} />
             <Route path="*" element={<Temp />} />
           </>
         )
       );
     }
+  } else {
+    router = createBrowserRouter(
+      createRoutesFromElements(
+        <>
+          <Route path="/" element={<Admin />} />
+          <Route path="*" element={<Temp />} />
+        </>
+      )
+    );
   }
 } else {
   if (window.innerWidth <= 768) {
