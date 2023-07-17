@@ -138,41 +138,52 @@ const DesktopStorePurchase = (props: any) => {
           return alert("존재하지 않는 학번입니다.");
         } else {
           axios
-            .post(
-              `https://minsapay-backend-c1deff28ec91.herokuapp.com/api/purchase/create`,
-              {
-                username: purchaseId,
-                amount: -Number(purchaseAmount),
-                productName: purchaseItem,
-                nameOfUser: res.data.user.name,
-                nameOfStore: props.store.name,
-                storeName: props.store.username,
-              }
-            )
-            .then((res) => {
-              if (res.status === 200) {
-                alert("환불에 성공했습니다.");
-                window.location.reload();
+            .post(`http://localhost:8800/api/user/purchase/${purchaseId}`)
+            .then((response) => {
+              if (response.status === 200) {
+                axios
+                  .post(
+                    `https://minsapay-backend-c1deff28ec91.herokuapp.com/api/purchase/create`,
+                    {
+                      username: purchaseId,
+                      amount: -Number(purchaseAmount),
+                      productName: purchaseItem,
+                      nameOfUser: res.data.user.name,
+                      nameOfStore: props.store.name,
+                      storeName: props.store.username,
+                    }
+                  )
+                  .then((resp) => {
+                    if (resp.status === 200) {
+                      alert("환불에 성공했습니다.");
+                      window.location.reload();
+                    }
+                  })
+                  .catch((err) => {
+                    if (err.response) {
+                      if (err.response.status === 403) {
+                        window.location.reload();
+                      }
+                    }
+                  });
               }
             })
             .catch((err) => {
               if (err.response) {
-                if (err.response.status === 403) {
+                if (err.response.status === 404) {
+                  alert("존재하지 않는 사용자입니다.");
                   window.location.reload();
                 }
+              } else {
+                console.log(err);
+                alert("결제에 실패했습니다.");
               }
             });
         }
       })
       .catch((err) => {
-        if (err.response) {
-          if (err.response.status === 404) {
-            alert("존재하지 않는 사용자입니다.");
-            window.location.reload();
-          }
-        } else {
-          alert("결제에 실패했습니다.");
-        }
+        console.log(err);
+        alert("실패했습니다.");
       });
   };
 

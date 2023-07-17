@@ -13,6 +13,8 @@ const Admin = () => {
   const [moneyUser, setMoneyUser] = useState("");
   const [chargeAmount, setChargeAmount] = useState("");
 
+  const [totalMoney, setTotalMoney] = useState<Number>(0);
+
   const handleUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
   };
@@ -135,6 +137,7 @@ const Admin = () => {
       })
       .catch((err) => {
         console.log(err);
+        console.log("HERE");
         alert("실패");
       });
   };
@@ -142,6 +145,23 @@ const Admin = () => {
   useEffect(() => {
     console.log(moneyUser, chargeAmount);
   }, [moneyUser, chargeAmount]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://minsapay-backend-c1deff28ec91.herokuapp.com/api/purchase/store/admin`
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data);
+          // setTotalMoney(res.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [])
+
 
   return (
     <>
@@ -159,6 +179,7 @@ const Admin = () => {
           type="number"
         />
         <button onClick={onClickCharge}>충전하기</button>
+        <h1></h1>
       </div>
     </>
   );
