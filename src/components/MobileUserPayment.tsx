@@ -14,6 +14,9 @@ import {
 } from "../styles/mobileUserPayment";
 
 const MobileUserPayment = (props: any) => {
+
+  // slice time
+  const hour = (Number(props.time.slice(0, 2))+9)%24;
   return (
     <div style={item}>
       <div style={productBox}>
@@ -29,7 +32,7 @@ const MobileUserPayment = (props: any) => {
             <span>{props.balance}</span>
           </div>
           <div style={date}>
-            <span>{props.time}</span>
+            <span>{hour}{props.time.slice(2, 8)}</span>
           </div>
         </div>
       </div>
